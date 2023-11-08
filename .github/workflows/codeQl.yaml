@@ -27,6 +27,8 @@ jobs:
     runs-on: 
       - nscloud-ubuntu-22.04-amd64-8x16-with-cache
       - nscloud-exp-runner-tool-cache-50gb
+      - nscloud-cache-size-50gb
+      - nscloud-cache-tag-gha-demo-ce
     permissions:
       actions: read
       contents: read
@@ -66,6 +68,13 @@ jobs:
     - if: matrix.language == 'python' || matrix.language == 'javascript'
       name: Autobuild
       uses: github/codeql-action/autobuild@v2
+
+    - if: matrix.language == 'java'
+      name: Setup java cache
+      uses: namespacelabs/nscloud-cache-action@v1
+      with:
+        path: |
+          ~/.m2
 
     - if: matrix.language == 'java'
       name: Build Java
