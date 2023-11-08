@@ -19,11 +19,12 @@ on:
     branches: [ master, v* ]
   # schedule:
   #   - cron: '42 20 * * 6'
+  workflow_dispatch:
 
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: nscloud-ubuntu-22.04-amd64-8x16
     permissions:
       actions: read
       contents: read
