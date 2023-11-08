@@ -24,7 +24,9 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: nscloud-ubuntu-22.04-amd64-8x16
+    runs-on: 
+      - nscloud-ubuntu-22.04-amd64-8x16-with-cache
+      - nscloud-exp-runner-tool-cache-50gb
     permissions:
       actions: read
       contents: read
